@@ -2,7 +2,6 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class Controller {
     @FXML
-    public TextField input;
+    public Label inputlable;
     @FXML
     public Button sortIt;
     @FXML
@@ -26,45 +25,25 @@ public class Controller {
             for (int i = list.length - 1; i >= 0; i--)
                 list[i] = heap.remove();
         }
-        public Integer[] goodInput(){
-            String s= input.getText();
-            ArrayList templist= new ArrayList();
-            Integer[] temp=null;
-            if(input.getText().isEmpty()){
-                output.setText("not a good array");
-                output.setVisible(true);
 
-                return null;
-            }
-            Pattern pattern = Pattern.compile("\\w+");
-            Matcher matcher = pattern.matcher(s);
-            while (matcher.find()) {
-                templist.add(matcher.group());
-                System.out.println(matcher.group());
-            }
-            try{
-                for(int i=0; i<templist.size();i++){
-                    temp[i]= (Integer) templist.get(i);
-                }
-            }catch (Exception e){
-                output.setText("not a good array");
-                output.setVisible(true);
-                output.setTextFill(Color.RED);
-            }
-            for (int i = 0; i < templist.size(); i++)
-                System.out.print(templist.get(i) + " ");
-            System.out.println();
-
-
-
-            return temp;
-        }
 
 
 
 
         public void sortCalc(){
-            sort(goodInput());
+            String fList="";
+            String sList="";
+            Integer[] list = {22, 2,-22,-3,4,-6,3,0,6};
+            for(int i=0;i<list.length;i++){
+                fList= fList +" " +list[i];
+            }
+            inputlable.setText("List is { "+fList+" }");
+            sort(list);
+            for(int i=0;i<list.length;i++){
+                sList= sList +" " +list[i];
+            }
+            output.setText("After the sort {"+ sList+"}");
+            output.setVisible(true);
 
         }
 
