@@ -47,14 +47,7 @@ public class Controller {
 
         }
 
-        public static void main(String[] args) {
-            Integer[] list = {-44, -5, -3, 3, 3, 1, -4, 0, 1, 2, 4, 5,-10, 53};
-            //sorty(list);
-
-            for (int i = 0; i < list.length; i++)
-                System.out.print(list[i] + " ");
-            System.out.println();
-        }
+       
 
 
 }
